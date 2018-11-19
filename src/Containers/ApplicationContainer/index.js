@@ -29,7 +29,7 @@ export default class ApplicationContainer extends Component {
       error => {
         this.setState({
           isLoaded: true,
-          error
+           error: 'Error....'
         });
       }
     );
@@ -49,7 +49,7 @@ export default class ApplicationContainer extends Component {
           error => {
             this.setState({
               isLoaded: true,
-              error
+              error: 'Error....'
             });
           }
         );
