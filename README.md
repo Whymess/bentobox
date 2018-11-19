@@ -1,3 +1,3 @@
 # mapbox
 
-Readme included in email. 
+Instructions included in email. 
