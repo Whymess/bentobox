@@ -10,28 +10,28 @@ const mapStyles = {
 export class MapContainer extends Component {
   renderMarkerComponent = () => {
     let { results } = this.props;
-  
     return results.map((el, i) => {
-      let { lat, lng } = el['cordinates'];
-     
+      if (el["cordinates"]) {
         let { id, name, address } = el;
-      return (
-        <Marker
-          key={i}
-          id={id}
-          title={`You are hovering over ${name}. It is located at ${address}. Click to view more detials.`}
-          position={{lat, lng }}
-          onClick={obj => this.props.onMarkerClick(obj)}
-        />
-      );
+        let { lat, lng } = el["cordinates"];
 
+        return (
+          <Marker
+            key={i}
+            id={id}
+            title={`You are hovering over ${name}. It is located at ${address}. Click to view more detials.`}
+            position={{ lat: lat, lng: lng }}
+            onClick={obj => this.props.onMarkerClick(obj)}
+          />
+        );
+      }
 
+      return "";
     });
   };
 
   render() {
-
-    let { google, results } = this.props;
+    let { google } = this.props;
     return (
       <Map
         google={google}
@@ -42,22 +42,7 @@ export class MapContainer extends Component {
         }}
         style={mapStyles}
       >
-
-        {
-          results.length > 0 ?
-
-
-           this.renderMarkerComponent()
-
-
-           :
-
-           ''
-
-
-         
-
-        }
+        {this.renderMarkerComponent()}
       </Map>
     );
   }
