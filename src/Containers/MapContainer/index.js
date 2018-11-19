@@ -10,7 +10,7 @@ const mapStyles = {
 export class MapContainer extends Component {
   renderMarkerComponent = () => {
     let { results } = this.props;
-    return results.map((el, i) => {
+    return results && results.map((el, i) => {
       let { lat, lng } = el.cordinates;
       let { id, name, address } = el;
       return (

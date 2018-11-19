@@ -24,7 +24,6 @@ export default class ApplicationContainer extends Component {
           isLoaded: true
         });
 
-        this.addUniqueIdAndGetLonAndLat(results);
       },
       error => {
         this.setState({
