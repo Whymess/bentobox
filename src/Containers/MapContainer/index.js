@@ -13,28 +13,25 @@ export class MapContainer extends Component {
   
     return results.map((el, i) => {
       let { lat, lng } = el['cordinates'];
-        if(lat !== undefined && lng !== undefined){
+     
         let { id, name, address } = el;
       return (
         <Marker
           key={i}
           id={id}
           title={`You are hovering over ${name}. It is located at ${address}. Click to view more detials.`}
-          position={{ lat: lat, lng: lng }}
+          position={{lat, lng }}
           onClick={obj => this.props.onMarkerClick(obj)}
         />
       );
 
 
-
-        } 
-        return ''
-     
     });
   };
 
   render() {
-    let { google } = this.props;
+
+    let { google, results } = this.props;
     return (
       <Map
         google={google}
@@ -45,7 +42,22 @@ export class MapContainer extends Component {
         }}
         style={mapStyles}
       >
-        {this.renderMarkerComponent()}
+
+        {
+          results.length > 0 ?
+
+
+           this.renderMarkerComponent()
+
+
+           :
+
+           ''
+
+
+         
+
+        }
       </Map>
     );
   }
