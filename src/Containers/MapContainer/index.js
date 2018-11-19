@@ -10,10 +10,11 @@ const mapStyles = {
 export class MapContainer extends Component {
   renderMarkerComponent = () => {
     let { results } = this.props;
-    if(results === undefined) return ''
+  
     return results.map((el, i) => {
-      let { lat, lng } = el.cordinates;
-      let { id, name, address } = el;
+      let { lat, lng } = el['cordinates'];
+        if(lat !== undefined && lng !== undefined){
+        let { id, name, address } = el;
       return (
         <Marker
           key={i}
@@ -23,6 +24,12 @@ export class MapContainer extends Component {
           onClick={obj => this.props.onMarkerClick(obj)}
         />
       );
+
+
+
+        } 
+        return ''
+     
     });
   };
 
