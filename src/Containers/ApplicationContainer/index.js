@@ -63,7 +63,7 @@ export default class ApplicationContainer extends Component {
   onMarkerClick = obj => {
     let { id } = obj;
     let { results } = this.state;
-    var locationToDisplay = results.find(el => {
+    let locationToDisplay = results.find(el => {
       return el["id"] === id;
     });
 
