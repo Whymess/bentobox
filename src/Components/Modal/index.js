@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 
+function createMarkup(hours) {
+  return { __html: hours };
+}
+
 export default class ModalContainer extends Component {
   renderOneImage = () => {
     let { images } = this.props.locationToDisplay;
@@ -57,7 +61,8 @@ export default class ModalContainer extends Component {
 
           {images && images.length === 1 ? this.renderOneImage() : ""}
 
-          <div>{hours}</div>
+          {/* This is dangerous */}
+          <div dangerouslySetInnerHTML={createMarkup(hours)} />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => handleModalClose()}>Close</Button>
